@@ -1,7 +1,7 @@
 package com.example.application;
 
-import javax.transaction.Transactional;
-import javax.validation.Valid;
+import jakarta.transaction.Transactional;
+import jakarta.validation.Valid;
 import java.util.List;
 import dev.hilla.Endpoint;
 import dev.hilla.Nonnull;

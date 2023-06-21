@@ -1,7 +1,7 @@
 package com.example.application;
 
-import javax.persistence.Entity;
-import javax.validation.constraints.NotBlank;
+import jakarta.persistence.Entity;
+import jakarta.validation.constraints.NotBlank;
 import io.quarkus.hibernate.orm.panache.PanacheEntity;
 
 @Entity
