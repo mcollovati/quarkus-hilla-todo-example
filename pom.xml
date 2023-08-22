@@ -15,7 +15,7 @@
     <quarkus.platform.version>3.2.4.Final</quarkus.platform.version>
     <skipITs>true</skipITs>
     <surefire-plugin.version>3.1.2</surefire-plugin.version>
-    <hilla.version>2.1.4</hilla.version>
+    <hilla.version>2.1.6</hilla.version>
   </properties>
   <dependencyManagement>
     <dependencies>
