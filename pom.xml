@@ -16,9 +16,22 @@
     <skipITs>true</skipITs>
     <surefire-plugin.version>3.1.2</surefire-plugin.version>
     <hilla.version>2.2.2</hilla.version>
+    <selenide.version>6.19.0</selenide.version>
   </properties>
   <dependencyManagement>
     <dependencies>
+      <!--
+       Selenide provide an implementation of Selenium HttpClient.Factory loaded through ServiceLoader
+       However, the implementation is based on Selenium NettyClient, that has been removed from Selenium 4.14
+       Pin selenium version to 4.13 until Selenide releases a version compatible with selenium 4.14
+       -->
+      <dependency>
+        <groupId>org.seleniumhq.selenium</groupId>
+        <artifactId>selenium-bom</artifactId>
+        <version>4.13.0</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
       <dependency>
         <groupId>${quarkus.platform.group-id}</groupId>
         <artifactId>${quarkus.platform.artifact-id}</artifactId>
@@ -62,6 +75,12 @@
     <dependency>
       <groupId>io.rest-assured</groupId>
       <artifactId>rest-assured</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.codeborne</groupId>
+      <artifactId>selenide</artifactId>
+      <version>${selenide.version}</version>
       <scope>test</scope>
     </dependency>
   </dependencies>
@@ -110,6 +129,10 @@
           <systemPropertyVariables>
             <java.util.logging.manager>org.jboss.logmanager.LogManager</java.util.logging.manager>
             <maven.home>${maven.home}</maven.home>
+            <selenide.reportsFolder>${project.build.directory}/selenide/selenide-reports
+            </selenide.reportsFolder>
+            <selenide.downloadsFolder>${project.build.directory}/selenide/downloads
+            </selenide.downloadsFolder>
           </systemPropertyVariables>
         </configuration>
       </plugin>
@@ -127,6 +150,10 @@
                 <native.image.path>${project.build.directory}/${project.build.finalName}-runner</native.image.path>
                 <java.util.logging.manager>org.jboss.logmanager.LogManager</java.util.logging.manager>
                 <maven.home>${maven.home}</maven.home>
+                <selenide.reportsFolder>${project.build.directory}/selenide/selenide-reports
+                </selenide.reportsFolder>
+                <selenide.downloadsFolder>${project.build.directory}/selenide/downloads
+                </selenide.downloadsFolder>
               </systemPropertyVariables>
             </configuration>
           </execution>

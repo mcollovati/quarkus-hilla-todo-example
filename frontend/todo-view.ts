@@ -52,9 +52,11 @@ export class TodoView extends LitElement {
     }
 
     updateTodoState(todo: Todo, done: boolean) {
-        todo.done = done;
-        const updatedTodo = { ...todo };
-        this.todos = this.todos.map((t) => (t.id === todo.id ? updatedTodo : t));
-        TodoEndpoint.update(updatedTodo);
+        if (todo.done !== done) {
+            todo.done = done;
+            const updatedTodo = {...todo};
+            this.todos = this.todos.map((t) => (t.id === todo.id ? updatedTodo : t));
+            TodoEndpoint.update(updatedTodo);
+        }
     }
 }
