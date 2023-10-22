@@ -64,7 +64,7 @@ class TodoViewTest {
                 .first().shouldBe(visible);
 
         ElementsCollection tasks = $$(shadowCss("div.todos div.todo", "todo-view"))
-                .shouldHave(sizeGreaterThanOrEqual(4));
+                .shouldHave(sizeGreaterThanOrEqual(10));
         int currentTasks = tasks.size();
 
         String itemText = "Test if adding items works";
