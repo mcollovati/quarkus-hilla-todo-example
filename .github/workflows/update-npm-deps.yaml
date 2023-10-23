@@ -12,9 +12,16 @@ jobs:
     name: Update NPM dependencies
     if: github.actor == 'dependabot[bot]' || github.event_name == 'workflow_dispatch'
     steps:
+      - name: Generate token
+        uses: tibdex/github-app-token@v1
+        id: generate-token
+        with:
+          app_id: ${{ secrets.QUARKUS_HILLA_BOT_ID }}
+          private_key: ${{ secrets.QUARKUS_HILLA_BOT_PRIVATE_KEY }}
       - name: Checkout
         uses: actions/checkout@v3
         with:
+          token: ${{ steps.generate-token.outputs.token }}
           ref: ${{ github.event.pull_request.head.sha }}
           fetch-depth: 0
       - name: Setup Java
@@ -35,13 +42,6 @@ jobs:
           commit_user_email: "141157179+quarkus-hilla-bot[bot]@users.noreply.github.com"
           file_pattern: ':(glob)**/package*.json'
           push_options: '--force-with-lease'
-      - name: Generate token
-        uses: tibdex/github-app-token@v1
-        if: ${{ steps.commit-changes.outputs.changes_detected == 'true' && github.event_name != 'workflow_dispatch' }}
-        id: generate-token
-        with:
-          app_id: ${{ secrets.QUARKUS_HILLA_BOT_ID }}
-          private_key: ${{ secrets.QUARKUS_HILLA_BOT_PRIVATE_KEY }}
       - name: Comment PR
         if: ${{ steps.commit-changes.outputs.changes_detected == 'true' && github.event_name != 'workflow_dispatch'}}
         uses: thollander/actions-comment-pull-request@v2
