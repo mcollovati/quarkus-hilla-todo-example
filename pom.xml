@@ -16,7 +16,7 @@
     <skipITs>true</skipITs>
     <surefire-plugin.version>3.2.1</surefire-plugin.version>
     <hilla.version>2.3.2</hilla.version>
-    <selenide.version>6.19.1</selenide.version>
+    <selenide.version>7.0.0</selenide.version>
   </properties>
   <dependencyManagement>
     <dependencies>
