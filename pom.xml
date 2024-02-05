@@ -17,7 +17,7 @@
     <surefire-plugin.version>3.2.5</surefire-plugin.version>
     <hilla.version>2.5.6</hilla.version>
     <selenide.version>7.0.6</selenide.version>
-    <hibernate.version>6.2.13.Final</hibernate.version>
+    <hibernate.version>6.4.3.Final</hibernate.version>
   </properties>
   <dependencyManagement>
     <dependencies>
