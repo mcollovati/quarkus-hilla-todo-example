@@ -12,19 +12,20 @@
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     <quarkus.platform.artifact-id>quarkus-bom</quarkus.platform.artifact-id>
     <quarkus.platform.group-id>io.quarkus.platform</quarkus.platform.group-id>
-    <quarkus.platform.version>3.8.2</quarkus.platform.version>
+    <quarkus.platform.version>3.13.2</quarkus.platform.version>
     <skipITs>true</skipITs>
     <surefire-plugin.version>3.3.1</surefire-plugin.version>
-    <hilla.version>2.5.8</hilla.version>
+    <vaadin.version>24.4.8</vaadin.version>
     <selenide.version>7.4.2</selenide.version>
+    <!--
     <jackson.version>2.17.2</jackson.version>
+    -->
   </properties>
   <dependencyManagement>
     <dependencies>
       <!--
       Pin jackson BOM to prevent clashes with version imported by Hilla BOM
       through spring-boot-dependencies BOM
-      -->
       <dependency>
           <groupId>com.fasterxml.jackson</groupId>
           <artifactId>jackson-bom</artifactId>
@@ -32,10 +33,11 @@
           <type>pom</type>
           <scope>import</scope>
       </dependency>
+      -->
       <dependency>
-        <groupId>dev.hilla</groupId>
-        <artifactId>hilla-bom</artifactId>
-        <version>${hilla.version}</version>
+        <groupId>com.vaadin</groupId>
+        <artifactId>vaadin-bom</artifactId>
+        <version>${vaadin.version}</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
@@ -55,7 +57,7 @@
     </dependency>
     <dependency>
       <groupId>io.quarkus</groupId>
-      <artifactId>quarkus-resteasy-reactive</artifactId>
+      <artifactId>quarkus-rest</artifactId>
     </dependency>
     <dependency>
       <groupId>io.quarkus</groupId>
@@ -72,7 +74,7 @@
     <dependency>
       <groupId>com.github.mcollovati</groupId>
       <artifactId>quarkus-hilla</artifactId>
-      <version>2.5.0</version>
+      <version>24.4.0</version>
     </dependency>
     <dependency>
       <groupId>io.quarkus</groupId>
@@ -109,9 +111,9 @@
         </executions>
       </plugin>
       <plugin>
-        <groupId>dev.hilla</groupId>
-        <artifactId>hilla-maven-plugin</artifactId>
-        <version>${hilla.version}</version>
+        <groupId>com.vaadin</groupId>
+        <artifactId>vaadin-maven-plugin</artifactId>
+        <version>${vaadin.version}</version>
         <executions>
           <execution>
             <goals>
@@ -175,9 +177,9 @@
           <build>
               <plugins>
                   <plugin>
-                      <groupId>dev.hilla</groupId>
-                      <artifactId>hilla-maven-plugin</artifactId>
-                      <version>${hilla.version}</version>
+                      <groupId>com.vaadin</groupId>
+                      <artifactId>vaadin-maven-plugin</artifactId>
+                      <version>${vaadin.version}</version>
                       <executions>
                           <execution>
                               <goals>
