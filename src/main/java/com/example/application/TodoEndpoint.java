@@ -3,11 +3,12 @@ package com.example.application;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import java.util.List;
-import dev.hilla.Endpoint;
-import dev.hilla.Nonnull;
-import com.vaadin.flow.server.auth.AnonymousAllowed;
 
-@Endpoint
+import com.vaadin.flow.server.auth.AnonymousAllowed;
+import com.vaadin.hilla.BrowserCallable;
+import com.vaadin.hilla.Nonnull;
+
+@BrowserCallable
 @AnonymousAllowed
 public class TodoEndpoint {
     private TodoRepository repository;
