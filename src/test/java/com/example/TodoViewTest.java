@@ -46,24 +46,24 @@ class TodoViewTest {
 
     @Test
     void rootPath_todoViewDisplayed() {
-        openAndWait(() -> $("todo-view"));
-        $(shadowCss("vaadin-text-field", "todo-view")).shouldBe(visible);
-        $$(shadowCss("vaadin-button", "todo-view")).filter(Condition.text("Add"))
+        openAndWait(() -> $("div.todos"));
+        $("vaadin-text-field").shouldBe(visible);
+        $$("vaadin-button").filter(Condition.text("Add"))
                 .first().shouldBe(visible);
-        $$(shadowCss("div.todos div.todo vaadin-checkbox", "todo-view"))
+        $$("div.todos div.todo vaadin-checkbox")
                 .shouldHave(size(4));
     }
 
     @Test
     void todoView_addTask() {
-        openAndWait(() -> $("todo-view"));
+        openAndWait(() -> $("div.todos"));
 
-        SelenideElement textField = $(shadowCss("vaadin-text-field", "todo-view")).shouldBe(visible);
-        SelenideElement button = $$(shadowCss("vaadin-button", "todo-view"))
+        SelenideElement textField = $("vaadin-text-field").shouldBe(visible);
+        SelenideElement button = $$("vaadin-button")
                 .filter(Condition.text("Add"))
                 .first().shouldBe(visible);
 
-        ElementsCollection tasks = $$(shadowCss("div.todos div.todo", "todo-view"))
+        ElementsCollection tasks = $$("div.todos div.todo")
                 .shouldHave(sizeGreaterThanOrEqual(4));
         int currentTasks = tasks.size();
 
@@ -79,9 +79,9 @@ class TodoViewTest {
 
     @Test
     void todoView_markTaskAsCompleted() {
-        openAndWait(() -> $("todo-view"));
+        openAndWait(() -> $("div.todos"));
 
-        ElementsCollection tasks = $$(shadowCss("div.todos div.todo", "todo-view"))
+        ElementsCollection tasks = $$("div.todos div.todo")
                 .shouldHave(sizeGreaterThanOrEqual(4))
                 .shouldHave(anyMatch("Expected at least one item not to be checked",
                         el -> $(el).$("input[type=checkbox]").is(not(checked))));
@@ -95,8 +95,8 @@ class TodoViewTest {
                 el.$("input[type=checkbox]").shouldBe(checked));
 
         // Reload page and verify all items are checked
-        openAndWait(() -> $("todo-view"));
-        $$(shadowCss("div.todos div.todo", "todo-view"))
+        openAndWait(() -> $("div.todos"));
+        $$("div.todos div.todo")
                 .asFixedIterable().forEach(el ->
                         el.$("input[type=checkbox]").shouldBe(checked));
     }
