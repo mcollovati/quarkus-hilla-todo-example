@@ -1,8 +1,11 @@
 package com.example.application;
 
 import jakarta.persistence.Entity;
+import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.NotBlank;
 import io.quarkus.hibernate.orm.panache.PanacheEntity;
+
+import com.vaadin.hilla.Nullable;
 
 @Entity
 public class Todo extends PanacheEntity {
@@ -17,6 +20,7 @@ public class Todo extends PanacheEntity {
         this.task = task;
     }
 
+    @Nullable
     public Long getId() {
         return id;
     }
