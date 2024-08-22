@@ -15,7 +15,7 @@
     <quarkus.platform.version>3.13.2</quarkus.platform.version>
     <skipITs>true</skipITs>
     <surefire-plugin.version>3.4.0</surefire-plugin.version>
-    <vaadin.version>24.4.8</vaadin.version>
+    <vaadin.version>24.4.10</vaadin.version>
     <selenide.version>7.4.2</selenide.version>
   </properties>
   <dependencyManagement>
