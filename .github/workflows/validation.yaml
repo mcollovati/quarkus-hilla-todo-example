@@ -115,6 +115,7 @@ jobs:
           name: tests-output-prod
           path: tests-reports-*.tgz
   test-results:
+    name: Evaluate Validation Results
     permissions:
       issues: read
       checks: write
