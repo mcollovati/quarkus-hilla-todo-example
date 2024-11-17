@@ -43,7 +43,7 @@ jobs:
           filters: |
             validate:
               - '!(README.md|LICENSE|.gitignore|etc/**)'
-  build-and-test-dev-mode:
+  build-and-test-dev:
     name: Build and test DEV
     needs: [changes]
     if: ${{ needs.changes.outputs.validation-required == 'true' }}
@@ -80,7 +80,7 @@ jobs:
         with:
           name: tests-output-dev
           path: tests-reports-*.tgz
-  build-and-test:
+  build-and-test-prod:
     name: Build and test PROD
     needs: [changes]
     if: ${{ needs.changes.outputs.validation-required == 'true' }}
@@ -114,3 +114,17 @@ jobs:
         with:
           name: tests-output-prod
           path: tests-reports-*.tgz
+  test-results:
+    permissions:
+      issues: read
+      checks: write
+      pull-requests: write
+    if: ${{ always() }}
+    needs: [changes, build-and-test-dev, build-and-test-prod]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set Failure Status
+        if: ${{ always() && (needs.build-and-test-dev.result != 'success' || needs.build-and-test-prod.result != 'success') }}
+        run: |
+          echo "🚫 THERE ARE TEST MODULES WITH FAILURES or BEEN CANCELLED" | tee -a $GITHUB_STEP_SUMMARY
+          exit 1
