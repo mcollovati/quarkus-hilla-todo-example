@@ -14,6 +14,7 @@ import com.codeborne.selenide.junit5.BrowserPerTestStrategyExtension;
 import io.quarkus.test.TestTransaction;
 import io.quarkus.test.common.http.TestHTTPResource;
 import io.quarkus.test.junit.QuarkusTest;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -42,6 +43,11 @@ class TodoViewTest {
     void setup() {
         Configuration.headless = runHeadless();
         System.setProperty("chromeoptions.args", "--remote-allow-origins=*");
+    }
+
+    @Test
+    void boom() {
+        Assertions.fail("Error");
     }
 
     @Test
