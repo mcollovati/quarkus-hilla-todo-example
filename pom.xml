@@ -109,13 +109,6 @@
             </goals>
           </execution>
         </executions>
-        <dependencies>
-            <dependency>
-                <groupId>com.github.mcollovati</groupId>
-                <artifactId>aot-browser-finder-callable-workaround</artifactId>
-                <version>${quarkus-hilla.version}</version>
-            </dependency>
-        </dependencies>
       </plugin>
       <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
