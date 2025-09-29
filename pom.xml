@@ -18,7 +18,7 @@
     <selenide.version>7.9.4</selenide.version>
 
     <vaadin.version>24.8.3</vaadin.version>
-    <quarkus-hilla.version>24.8.1</quarkus-hilla.version>
+    <quarkus-hilla.version>24.9.0</quarkus-hilla.version>
   </properties>
   <dependencyManagement>
     <dependencies>
