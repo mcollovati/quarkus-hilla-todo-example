@@ -14,10 +14,10 @@
     <quarkus.platform.group-id>io.quarkus.platform</quarkus.platform.group-id>
     <quarkus.platform.version>3.28.4</quarkus.platform.version>
     <skipITs>true</skipITs>
-    <surefire-plugin.version>3.5.3</surefire-plugin.version>
-    <selenide.version>7.9.4</selenide.version>
+    <surefire-plugin.version>3.5.4</surefire-plugin.version>
+    <selenide.version>7.11.1</selenide.version>
 
-    <vaadin.version>24.9.2</vaadin.version>
+    <vaadin.version>24.9.3</vaadin.version>
     <quarkus-hilla.version>24.9.1</quarkus-hilla.version>
   </properties>
   <dependencyManagement>
