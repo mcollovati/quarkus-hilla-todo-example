@@ -104,18 +104,6 @@
         </executions>
       </plugin>
       <plugin>
-        <groupId>com.vaadin</groupId>
-        <artifactId>vaadin-maven-plugin</artifactId>
-        <version>${vaadin.version}</version>
-        <executions>
-          <execution>
-            <goals>
-              <goal>prepare-frontend</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
-      <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
         <version>${compiler-plugin.version}</version>
         <configuration>
@@ -164,26 +152,19 @@
     </plugins>
   </build>
   <profiles>
-      <profile>
-          <!-- Production mode is activated using -Pproduction -->
-          <id>production</id>
-          <build>
-              <plugins>
-                  <plugin>
-                      <groupId>com.vaadin</groupId>
-                      <artifactId>vaadin-maven-plugin</artifactId>
-                      <version>${vaadin.version}</version>
-                      <executions>
-                          <execution>
-                              <goals>
-                                  <goal>build-frontend</goal>
-                              </goals>
-                          </execution>
-                      </executions>
-                  </plugin>
-              </plugins>
-          </build>
-      </profile>
+    <profile>
+      <id>dev-mode-test</id>
+      <properties>
+        <skipITs>true</skipITs>
+      </properties>
+      <dependencies>
+        <dependency>
+          <groupId>com.vaadin</groupId>
+          <artifactId>vaadin-dev</artifactId>
+          <scope>test</scope>
+        </dependency>
+      </dependencies>
+    </profile>
     <profile>
       <id>native</id>
       <activation>
