@@ -124,6 +124,7 @@
             <selenide.downloadsFolder>${project.build.directory}/selenide/downloads
             </selenide.downloadsFolder>
           </systemPropertyVariables>
+          <skip>${skipUTs}</skip>
         </configuration>
       </plugin>
       <plugin>
